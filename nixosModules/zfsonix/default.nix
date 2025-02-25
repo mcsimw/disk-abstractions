@@ -42,7 +42,7 @@ in
     // (
       (import ./settings.nix {
         inherit (cfg) diskName;
-        inherit localFlake;
+        inherit localFlake lib;
       })
       (import ../../templates/zfsonix.nix { inherit (cfg) diskName device ashift; })
     )
