@@ -34,7 +34,6 @@ in
       description = "The size of the swap partition. Accepts values like 1024M or 4G.";
 
     };
-
   };
   config = lib.mkIf cfg.enable (
     (import ./settings.nix {
