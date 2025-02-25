@@ -3,7 +3,7 @@
   diskName,
   device,
   swapSize,
-  lib, 
+  lib,
   ...
 }:
 let

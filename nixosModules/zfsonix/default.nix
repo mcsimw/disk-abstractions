@@ -25,12 +25,12 @@ in
       default = 12;
       description = "The ashift value for ZFS (log₂ of the sector size).";
     };
-swapSize = lib.mkOption {
-  type = lib.types.str;
-  default = "2G";
-  description = "The size of the swap partition. Accepts values like 1024M or 4G.";
- 
-};
+    swapSize = lib.mkOption {
+      type = lib.types.str;
+      default = "2G";
+      description = "The size of the swap partition. Accepts values like 1024M or 4G.";
+
+    };
 
   };
   config = lib.mkIf cfg.enable (
@@ -38,7 +38,15 @@ swapSize = lib.mkOption {
       inherit (cfg) diskName;
       inherit localFlake lib;
     })
-    // (import ../../templates/zfsonix.nix { inherit (cfg) diskName device ashift swapSize; inherit lib; })
+    // (import ../../templates/zfsonix.nix {
+      inherit (cfg)
+        diskName
+        device
+        ashift
+        swapSize
+        ;
+      inherit lib;
+    })
   );
 
 }
