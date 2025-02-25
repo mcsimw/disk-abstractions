@@ -25,17 +25,13 @@ in
       default = 12;
       description = "The ashift value for ZFS (log₂ of the sector size).";
     };
-    swapSize = lib.mkOption {
-      type = lib.types.str;
-      default = "2G";
-      description = "The size of the swap partition.";
-      check =
-        value:
-        let
-          m = builtins.match "^[1-9][0-9]*(M|G)$" value;
-        in
-        m != null;
-    };
+swapSize = lib.mkOption {
+  type = lib.types.str;
+  default = "2G";
+  description = "The size of the swap partition. Accepts values like 1024M or 4G.";
+  check = value: builtins.match "^[1-9][0-9]*(M|G)$" value != null;
+};
+
   };
   config = lib.mkIf (cfg.enable && cfg.template == "zfsos") (
     (import ./settings.nix {
