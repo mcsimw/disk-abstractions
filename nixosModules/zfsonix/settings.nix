@@ -1,7 +1,7 @@
-{ diskName, ... }:
+{ diskName, localFlake... }:
 {
   imports = [
-    ../../zfs-rollback.nix
+    localFlake.nixosModules.zfs-rollback
   ];
   boot = {
     kernelParams = [ "nohibernate" ];
