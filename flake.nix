@@ -45,10 +45,10 @@
           "aarch64-linux"
         ];
         flake.nixosModules = {
-          #zfs-rollback = import ./nixosModules/zfs-rollback.nix;
-          zfsonix = lib.modules.importApply ./nixosModules/zfsonix {
-            localFlake = self;
-          };
+          zfs-rollback = import ./nixosModules/zfs-rollback.nix;
+#          zfsonix = lib.modules.importApply ./nixosModules/zfsonix {
+#            localFlake = self;
+#          };
         };
       }
     );
