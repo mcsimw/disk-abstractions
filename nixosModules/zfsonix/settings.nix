@@ -1,8 +1,5 @@
 { diskName, localFlake, ... }:
 {
-  imports = [
-    localFlake.nixosModules.zfs-rollback
-  ];
   boot = {
     kernelParams = [ "nohibernate" ];
     tmp.cleanOnBoot = true;
@@ -11,11 +8,6 @@
     "/".neededForBoot = true;
     "/persist".neededForBoot = true;
     "/mnt/${diskName}".neededForBoot = true;
-  };
-  zfs-rollback = {
-    enable = true;
-  snapshot = "blank";
-  volume = "${diskName}-zfsos/faketmpfs";
   };
   environment.persistence."/persist" = {
     enable = true;
