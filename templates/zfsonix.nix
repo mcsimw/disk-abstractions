@@ -3,10 +3,11 @@
   diskName,
   device,
   swapSize,
+  lib, 
   ...
 }:
 let
-  esp = import ./esp.nix { inherit diskName; };
+  esp = import ./esp.nix { inherit diskName lib; };
 in
 {
   disko.devices = {
