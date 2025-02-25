@@ -1,4 +1,4 @@
-{ diskName }:
+{ diskName, lib }:
 {
   type = "EF00";
   size = "1G";
@@ -13,7 +13,7 @@
     ];
     extraArgs = [
       "-n"
-      "${builtins.toUpper (diskName + "-esp")}"
+      "${lib.strings.toUpper (diskName + "-esp")}"
     ];
   };
 }
