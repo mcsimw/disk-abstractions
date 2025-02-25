@@ -12,11 +12,11 @@
     "/persist".neededForBoot = true;
     "/mnt/${diskName}".neededForBoot = true;
   };
-  # zfs-rollback = {
-  #  enable = true;
-  # snapshot = "blank";
-  #volume = "${diskName}-zfsos/faketmpfs";
-  #};
+  zfs-rollback = {
+    enable = true;
+  snapshot = "blank";
+  volume = "${diskName}-zfsos/faketmpfs";
+  };
   environment.persistence."/persist" = {
     enable = true;
     hideMounts = true;
