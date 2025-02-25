@@ -4,6 +4,9 @@ let
   cfg = config.zfsonix;
 in
 {
+  imports = [
+    localFlake.nixosModules.zfs-rollback
+  ];
   options.zfsonix = {
     enable = lib.mkOption {
       type = lib.types.bool;
@@ -36,7 +39,6 @@ in
   config = lib.mkIf cfg.enable (
     (import ./settings.nix {
       inherit (cfg) diskName;
-      inherit localFlake lib;
     })
     // (import ../../templates/zfsonix.nix {
       inherit (cfg)
