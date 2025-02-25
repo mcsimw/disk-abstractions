@@ -29,7 +29,7 @@ swapSize = lib.mkOption {
   type = lib.types.str;
   default = "2G";
   description = "The size of the swap partition. Accepts values like 1024M or 4G.";
-  check = value: builtins.match "^[1-9][0-9]*(M|G)$" value != null;
+ 
 };
 
   };
