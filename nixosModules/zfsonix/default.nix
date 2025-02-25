@@ -33,7 +33,7 @@ swapSize = lib.mkOption {
 };
 
   };
-  config = lib.mkIf (cfg.enable && cfg.template == "zfsos") (
+  config = lib.mkIf cfg.enable (
     (import ./settings.nix {
       inherit (cfg) diskName;
       inherit localFlake lib;
