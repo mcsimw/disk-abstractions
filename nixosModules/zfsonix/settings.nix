@@ -1,4 +1,4 @@
-{ localFlake, diskName, ... }:
+{ diskName, ... }:
 {
   imports = [
     #../../zfs-rollback.nix
@@ -12,10 +12,10 @@
     "/persist".neededForBoot = true;
     "/mnt/${diskName}".neededForBoot = true;
   };
- # zfs-rollback = {
+  # zfs-rollback = {
   #  enable = true;
-   # snapshot = "blank";
-    #volume = "${diskName}-zfsos/faketmpfs";
+  # snapshot = "blank";
+  #volume = "${diskName}-zfsos/faketmpfs";
   #};
   environment.persistence."/persist" = {
     enable = true;

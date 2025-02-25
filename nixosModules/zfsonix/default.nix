@@ -38,13 +38,11 @@ in
     };
   };
   config = lib.mkIf (cfg.enable && cfg.template == "zfsos") (
-    { }
-    // (
-      (import ./settings.nix {
-        inherit (cfg) diskName;
-        inherit localFlake lib;
-      })
-      (import ../../templates/zfsonix.nix { inherit (cfg) diskName device ashift; })
-    )
+    (import ./settings.nix {
+      inherit (cfg) diskName;
+      inherit localFlake lib;
+    })
+    // (import ../../templates/zfsonix.nix { inherit (cfg) diskName device ashift; })
   );
+
 }
