@@ -38,7 +38,7 @@ swapSize = lib.mkOption {
       inherit (cfg) diskName;
       inherit localFlake lib;
     })
-    // (import ../../templates/zfsonix.nix { inherit (cfg) diskName device ashift swapSize; })
+    // (import ../../templates/zfsonix.nix { inherit (cfg) diskName device ashift swapSize lib; })
   );
 
 }
