@@ -1,4 +1,4 @@
-{ diskName, localFlake... }:
+{ diskName, localFlake, ... }:
 {
   imports = [
     localFlake.nixosModules.zfs-rollback
