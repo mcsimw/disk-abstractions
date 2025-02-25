@@ -1,5 +1,8 @@
 { diskName, localFlake, ... }:
 {
+  imports = [
+    localFlake.nixosModules.zfs-rollback
+  ];
   boot = {
     kernelParams = [ "nohibernate" ];
     tmp.cleanOnBoot = true;
