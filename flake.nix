@@ -10,7 +10,11 @@
       type = "github";
       owner = "mcsimw";
       repo = "nix-genesis";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "flake-parts";
+      };
     };
     flake-parts = {
       type = "github";
@@ -19,7 +23,9 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
+      type = "github";
+      owner = "numtide";
+      repo = "treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -28,15 +34,20 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
       { self, lib, ... }:
       {
-        perSystem.treefmt = {
-          projectRootFile = "flake.nix";
-          programs = {
-            nixfmt.enable = true;
-            deadnix.enable = true;
-            statix.enable = true;
-            dos2unix.enable = true;
+        perSystem =
+          { pkgs, ... }:
+          {
+            treefmt = {
+              projectRootFile = "flake.nix";
+              programs = {
+                nixfmt.enable = true;
+                deadnix.enable = true;
+                statix.enable = true;
+                dos2unix.enable = true;
+              };
+            };
+            packages.install = import ./scripts/install/script.nix { inherit pkgs inputs self; };
           };
-        };
         imports = [
           inputs.treefmt-nix.flakeModule
         ];
@@ -44,10 +55,12 @@
           "x86_64-linux"
           "aarch64-linux"
         ];
-        flake.nixosModules = {
-          zfs-rollback = import ./nixosModules/zfs-rollback.nix;
-          zfsonix = lib.modules.importApply ./nixosModules/zfsonix {
-            localFlake = self;
+        flake = {
+          nixosModules = {
+            zfs-rollback = import ./nixosModules/zfs-rollback.nix;
+            zfsonix = lib.modules.importApply ./nixosModules/zfsonix {
+              localFlake = self;
+            };
           };
         };
       }
