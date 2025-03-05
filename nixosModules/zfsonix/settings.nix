@@ -12,7 +12,7 @@
   zfs-rollback = {
     enable = true;
     snapshot = "blank";
-    volume = "${diskName}-zfsos-zpool/faketmpfs";
+    volume = "${diskName}-zfsos/faketmpfs";
   };
   environment.persistence."/persist" = {
     enable = true;
