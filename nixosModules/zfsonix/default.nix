@@ -15,22 +15,18 @@ in
     };
     diskName = lib.mkOption {
       type = lib.types.str;
-      default = "zfsos-disk";
       description = "The name of the disk to be used.";
     };
     device = lib.mkOption {
       type = lib.types.path;
-      default = "/dev/sdX";
       description = "The block device path for the disk.";
     };
     ashift = lib.mkOption {
       type = lib.types.int;
-      default = 12;
       description = "The ashift value for ZFS (log₂ of the sector size).";
     };
     swapSize = lib.mkOption {
       type = lib.types.str;
-      default = "2G";
       description = "The size of the swap partition. Accepts values like 1024M or 4G.";
     };
   };
@@ -48,5 +44,4 @@ in
       inherit lib;
     })
   );
-
 }
