@@ -1,11 +1,11 @@
 { pkgs, self, ... }:
 pkgs.writeShellApplication {
-  name = "lemon";
+  name = "DISK-PARTITIONER";
   runtimeInputs = [ pkgs.gum ];
   text = ''
   
     gum style --border normal --margin "1" --padding "1 2" --border-foreground 212 \
-      "Hello, there! Welcome to $(gum style --foreground 212 'The BEST NIX INSTALLER')."
+      "Hello, there! Welcome to $(gum style --foreground 212 'DISK PARTITIONER')."
 
   
     while true; do
