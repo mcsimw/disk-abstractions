@@ -3,11 +3,9 @@ pkgs.writeShellApplication {
   name = "DISK-PARTITIONER";
   runtimeInputs = [ pkgs.gum ];
   text = ''
-  
     gum style --border normal --margin "1" --padding "1 2" --border-foreground 212 \
       "Hello, there! Welcome to $(gum style --foreground 212 'DISK PARTITIONER')."
 
-  
     while true; do
       DISKID=$(gum input --placeholder "Enter disk identifier (e.g., sda, nvme0n1)")
       DRIVEPATH="/dev/$DISKID"
@@ -24,7 +22,6 @@ pkgs.writeShellApplication {
     DISKNAME=$(gum input --placeholder "What do you want your disk name set to?")
     SWAPSIZE=$(gum input --placeholder "What do you want as swap size?")
 
-    # Display a summary of the provided inputs
     gum style --align center --border normal --margin "1" --padding "1" --foreground 212 \
       "You have set the following properties:
       Disk name: $DISKNAME
@@ -32,8 +29,6 @@ pkgs.writeShellApplication {
       Ashift: $ASHIFT
       Swap size: $SWAPSIZE"
 
-    # Let the user select actions using gum choose with multi-selection support.
-    # Use tab or ctrl+space to toggle selections, then press enter.
     ACTIONS=$(gum choose --no-limit "destroy" "format" "mount" --header "Select actions to perform (use tab or ctrl+space to select, then press enter)")
 
     if [ -z "$ACTIONS" ]; then
@@ -41,7 +36,6 @@ pkgs.writeShellApplication {
       exit 1
     fi
 
-    # Display the selected actions
     gum style --align center --border normal --margin "1" --padding "1" --foreground 212 \
       "You have selected: $ACTIONS"
     COUNT=$(echo "$ACTIONS" | wc -w | tr -d ' ')
@@ -61,13 +55,11 @@ pkgs.writeShellApplication {
       exit 1
     fi
 
-    # Ask for final confirmation with the validated mode displayed.
     if ! gum confirm "Do you want to proceed with these actions? (mode: $MODE)"; then
       gum style --foreground 1 "Operation cancelled."
       exit 0
     fi
 
-    # Execute the installer command with the chosen mode and provided parameters.
     sudo nix --experimental-features "nix-command flakes cgroups" run \
       github:nix-community/disko/latest -- --mode "$MODE" ${self.outPath}/templates/zfsonix.nix \
       --argstr ashift "$ASHIFT" --argstr diskName "$DISKNAME" --argstr device "$DRIVEPATH" --argstr swapSize "$SWAPSIZE"
