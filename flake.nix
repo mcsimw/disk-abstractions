@@ -46,7 +46,7 @@
                 dos2unix.enable = true;
               };
             };
-            packages.install = import ./scripts/install/script.nix { inherit pkgs inputs self; };
+            packages.disk-partitioner = import ./scripts/partitioner/script.nix { inherit pkgs inputs self; };
           };
         imports = [
           inputs.treefmt-nix.flakeModule
