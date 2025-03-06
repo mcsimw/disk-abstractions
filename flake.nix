@@ -6,10 +6,10 @@
       owner = "NixOS";
       repo = "nixpkgs";
     };
-    nix-genesis = {
+    genesis-nix = {
       type = "github";
       owner = "mcsimw";
-      repo = "nix-genesis";
+      repo = "genesis-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";

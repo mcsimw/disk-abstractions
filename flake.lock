@@ -20,7 +20,7 @@
         "type": "github"
       }
     },
-    "nix-genesis": {
+    "genesis-nix": {
       "inputs": {
         "flake-parts": [
           "flake-parts"
@@ -36,23 +36,23 @@
         "lastModified": 1741201705,
         "narHash": "sha256-cw2O9ml+7lYShqOU8nKoOgt/+UXcUH5Up9DFi9aGBM0=",
         "owner": "mcsimw",
-        "repo": "nix-genesis",
+        "repo": "genesis-nix",
         "rev": "666b68179a6c70c073ad42aae35ac67b533d72bb",
         "type": "github"
       },
       "original": {
         "owner": "mcsimw",
-        "repo": "nix-genesis",
+        "repo": "genesis-nix",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1741214746,
-        "narHash": "sha256-itydkxmUb5hT9/aFPq7sREHNqKn4EeQxg2DOGkK5HI4=",
+        "lastModified": 1741222007,
+        "narHash": "sha256-4llFYO6X2r0YKtBliVMd3z26Or/YFxlNCv7sL+o7ncg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5b67dad13c7fc4f8e56da28d382e0af4f2f4accc",
+        "rev": "925ac765d0ed51d3cb30ca9cecccc104b64dd3fd",
         "type": "github"
       },
       "original": {
@@ -64,7 +64,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nix-genesis": "nix-genesis",
+        "genesis-nix": "genesis-nix",
         "nixpkgs": "nixpkgs",
         "treefmt-nix": "treefmt-nix"
       }
