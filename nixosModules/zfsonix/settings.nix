@@ -1,4 +1,4 @@
-{ diskName, ... }:
+{ diskName, lib, ... }:
 {
   boot = {
     kernelParams = [ "nohibernate" ];
@@ -14,13 +14,15 @@
     snapshot = "blank";
     volume = "${diskName}-zfsos/faketmpfs";
   };
-  environment.persistence."/persist" = {
-    enable = true;
-    hideMounts = true;
-    directories = [
-      "/var/lib/nixos"
-      "/var/log"
-      "/var/lib/systemd/coredump"
-    ];
+  environment = lib.mkIf (options ? environment.persistence) {
+    persistence."/persist" = {
+      enable = true;
+      hideMounts = true;
+      directories = [
+        "/var/lib/nixos"
+        "/var/log"
+        "/var/lib/systemd/coredump"
+      ];
+    };
   };
 }
