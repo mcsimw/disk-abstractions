@@ -1,5 +1,10 @@
 { localFlake, ... }:
-{ lib, config, options,... }:
+{
+  lib,
+  config,
+  options,
+  ...
+}:
 let
   cfg = config.zfsonix;
 in
