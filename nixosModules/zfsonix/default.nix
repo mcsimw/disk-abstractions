@@ -33,6 +33,7 @@ in
   config = lib.mkIf cfg.enable (
     (import ./settings.nix {
       inherit (cfg) diskName;
+      inherit lib;
     })
     // (import ../../templates/zfsonix.nix {
       inherit (cfg)
