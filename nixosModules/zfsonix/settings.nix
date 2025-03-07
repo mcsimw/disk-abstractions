@@ -1,4 +1,4 @@
-{ diskName, lib, ... }:
+{ diskName, lib, options, ... }:
 {
   boot = {
     kernelParams = [ "nohibernate" ];
