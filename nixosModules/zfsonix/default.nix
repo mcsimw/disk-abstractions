@@ -1,5 +1,5 @@
 { localFlake, ... }:
-{ lib, config, ... }:
+{ lib, config, options,... }:
 let
   cfg = config.zfsonix;
 in
@@ -33,7 +33,7 @@ in
   config = lib.mkIf cfg.enable (
     (import ./settings.nix {
       inherit (cfg) diskName;
-      inherit lib;
+      inherit lib options;
     })
     // (import ../../templates/zfsonix.nix {
       inherit (cfg)
