@@ -1,5 +1,5 @@
 {
-  description = "My new flake with merged nixosModules";
+  description = "disk-abstractions";
   inputs = {
     nixpkgs = {
       type = "github";
