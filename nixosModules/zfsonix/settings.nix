@@ -23,7 +23,7 @@
   };
 }
 // lib.optionalAttrs (options ? preservation) {
-  preservation.preserveAt."/persistent" = {
+  preservation.preserveAt."/persist" = {
     directories = [
       "/var/log"
     ];
