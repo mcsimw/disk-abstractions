@@ -23,9 +23,9 @@
   };
 }
 // lib.optionalAttrs (options ? preservation) {
-  preservation.preserveAt."/persist" = {
-    directories = [
-      "/var/log"
-    ];
-  };
+  preservation.preserveAt."/persist".directories = [
+    "/var/lib/nixos"
+    "/var/log"
+    "/var/lib/systemd/coredump"
+  ];
 }
